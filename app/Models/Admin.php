@@ -18,6 +18,7 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+        'role', // Pastikan kolom role ada
     ];
 
     /**

@@ -17,6 +17,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'digital_marketing' => [ // Tambahkan ini
+            'driver' => 'session',
+            'provider' => 'digital_marketings',
+        ],
+        'sdm' => [ // Tambahkan ini
+            'driver' => 'session',
+            'provider' => 'sdms',
+        ],
     ],
 
     'providers' => [
@@ -28,6 +36,14 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'digital_marketings' => [ // Tambahkan ini
+            'driver' => 'eloquent',
+            'model' => App\Models\DigitalMarketing::class,
+        ],
+        'sdms' => [ // Tambahkan ini
+            'driver' => 'eloquent',
+            'model' => App\Models\Sdm::class,
         ],
     ],
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\DigitalMarketingController;
 use App\Http\Controllers\SekilasPerusahaanController;
 use App\Http\Controllers\JejakLangkahController;
 use App\Http\Controllers\VisiMisiBudayaController;
@@ -24,6 +25,8 @@ use App\Http\Controllers\Digitalsolution\CarouseldsController;
 use App\Http\Controllers\Digitalsolution\DigitalSolutionController;
 use App\Http\Controllers\Digitalsolution\GambardsController;
 use App\Http\Controllers\Digitalsolution\TextdsController;
+use App\Http\Controllers\SdmController;
+use App\Http\Controllers\DashboardController;
 
 // Route untuk halaman utama
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('landingpage');
@@ -202,8 +205,24 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     });
 });
 
+// Routes untuk digital marketing
+Route::middleware('digital_marketing')->prefix('digital-marketing')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.digitalmarketing'); // Mengarahkan ke file digitalmarketing.blade.php
+    })->name('digitalmarketing.dashboard');
+});
+
+// Routes untuk SDM
+Route::middleware('sdm')->prefix('sdm')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.sdm'); // Mengarahkan ke file sdm.blade.php
+    })->name('sdm.dashboard');
+});
+
 // Routes untuk halaman public
 Route::get('/facility-management', [FacilityManagementController::class, 'index'])->name('facility-management');
 Route::get('/swasegar', [SwasegarController::class, 'index'])->name('swasegar');
 Route::get('/swatour', [SwatourorganizerController::class, 'index'])->name('swatour');
 Route::get('/Digital-Solution', [DigitalSolutionController::class, 'index'])->name('digitalsolution');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
