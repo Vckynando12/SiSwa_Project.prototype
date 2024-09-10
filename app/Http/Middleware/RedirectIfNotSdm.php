@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response; // Add this import
+use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfNotSdm
 {
@@ -16,9 +16,11 @@ class RedirectIfNotSdm
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Cek apakah pengguna terautentikasi sebagai SDM
         if (!Auth::guard('sdm')->check()) {
-            return redirect('/'); // Ganti dengan rute yang sesuai
+            return redirect()->route('auth.login'); // Arahkan ke halaman login jika tidak terautentikasi
         }
-        return $next($request);
+
+        return $next($request); // Lanjutkan ke permintaan berikutnya jika terautentikasi
     }
 }

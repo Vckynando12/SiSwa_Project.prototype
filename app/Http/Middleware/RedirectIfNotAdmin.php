@@ -10,11 +10,11 @@ class RedirectIfNotAdmin
 {
     public function handle(Request $request, Closure $next)
     {
-        // Cek apakah guard admin sedang digunakan dan user tidak login
+        // Cek apakah pengguna terautentikasi sebagai admin
         if (!Auth::guard('admin')->check()) {
-            return redirect()->route('auth.login');
+            return redirect()->route('auth.login'); // Arahkan ke halaman login jika tidak terautentikasi
         }
 
-        return $next($request);
+        return $next($request); // Lanjutkan ke permintaan berikutnya jika terautentikasi
     }
 }

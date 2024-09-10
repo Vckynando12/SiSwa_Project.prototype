@@ -44,10 +44,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
-    ];
-
-    protected $routeMiddleware = [
-        // ... existing middleware ...
         'digital_marketing' => \App\Http\Middleware\RedirectIfNotDigitalMarketing::class,
         'sdm' => \App\Http\Middleware\RedirectIfNotSdm::class,
     ];

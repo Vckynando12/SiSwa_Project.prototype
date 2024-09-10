@@ -27,6 +27,7 @@ use App\Http\Controllers\Digitalsolution\GambardsController;
 use App\Http\Controllers\Digitalsolution\TextdsController;
 use App\Http\Controllers\SdmController;
 use App\Http\Controllers\DashboardController;
+use App\Models\DigitalMarketing;
 
 // Route untuk halaman utama
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('landingpage');
@@ -38,7 +39,18 @@ Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout
 Route::get('auth/register', [AuthController::class, 'showRegisterForm'])->name('auth.register');
 Route::post('auth/register', [AuthController::class, 'register']);
 
-// Routes untuk admin
+
+
+    Route::middleware('admin')->prefix('admin')->group(function () {
+        // Dashboard Digital Marketing
+        Route::get('/digitalmarketing', [DigitalMarketingController::class, 'index'])->name('admin.digitalmarketing');
+    });
+
+    Route::middleware('admin')->prefix('admin')->group(function () {
+        // Dashboard Admin
+        Route::get('/sdm', [SdmController::class, 'index'])->name('admin.sdm');
+    });
+
 Route::middleware('admin')->prefix('admin')->group(function () {
     // Dashboard Admin
     Route::get('/dashboard', [CarouselController::class, 'index'])->name('admin.dashboard');
@@ -203,20 +215,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
             Route::delete('/destroy/{id}', [TextdsController::class, 'destroy'])->name('admin.digitalsolution.textds.destroy');
         });
     });
-});
-
-// Routes untuk digital marketing
-Route::middleware('digital_marketing')->prefix('digital-marketing')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.digitalmarketing'); // Mengarahkan ke file digitalmarketing.blade.php
-    })->name('digitalmarketing.dashboard');
-});
-
-// Routes untuk SDM
-Route::middleware('sdm')->prefix('sdm')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.sdm'); // Mengarahkan ke file sdm.blade.php
-    })->name('sdm.dashboard');
 });
 
 // Routes untuk halaman public

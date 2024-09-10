@@ -9,6 +9,6 @@ class SdmController extends Controller
     public function index()
     {
         // Logika untuk menampilkan dashboard SDM
-        return view('sdm.dashboard');
+        return view('admin.sdm');
     }
 }

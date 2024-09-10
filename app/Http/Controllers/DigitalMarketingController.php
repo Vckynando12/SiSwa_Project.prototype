@@ -9,6 +9,6 @@ class DigitalMarketingController extends Controller
     public function index()
     {
         // Logika untuk menampilkan dashboard digital marketing
-        return view('digital_marketing.dashboard');
+        return view('admin.digitalmarketing'); // Pastikan file ini ada
     }
 }

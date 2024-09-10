@@ -16,9 +16,11 @@ class RedirectIfNotDigitalMarketing
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Cek apakah pengguna terautentikasi sebagai digital marketing
         if (!Auth::guard('digital_marketing')->check()) {
-            return redirect('/'); // Ganti dengan rute yang sesuai
+            return redirect()->route('auth.login'); // Arahkan ke halaman login jika tidak terautentikasi
         }
-        return $next($request);
+
+        return $next($request); // Lanjutkan ke permintaan berikutnya jika terautentikasi
     }
 }
