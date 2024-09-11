@@ -28,6 +28,8 @@ use App\Http\Controllers\Digitalsolution\GambardsController;
 use App\Http\Controllers\Digitalsolution\TextdsController;
 use App\Http\Controllers\SdmController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\swaacademy\GambarAcademyController;
+use App\Http\Controllers\swaacademy\TextAcademyController;
 use App\Models\DigitalMarketing;
 
 // Route untuk halaman utama
@@ -223,6 +225,18 @@ Route::middleware('admin')->prefix('admin')->group(function () {
             Route::post('/store', [CarouselAcademyController::class, 'store'])->name('admin.swaacademy.carouselacademy.store');
             Route::put('/update/{id}', [CarouselAcademyController::class, 'update'])->name('admin.swaacademy.carouselacademy.update');
             Route::delete('/delete/{id}', [CarouselAcademyController::class, 'destroy'])->name('admin.swaacademy.carouselacademy.destroy');
+        });
+        Route::prefix('gambaracademy')->group(function () {
+            Route::get('/', [GambarAcademyController::class, 'index'])->name('admin.swaacademy.gambarAcademy.index');
+            Route::post('/store', [GambarAcademyController::class, 'store'])->name('admin.swaacademy.gambarAcademy.store');
+            Route::put('/update/{id}', [GambarAcademyController::class, 'update'])->name('admin.swaacademy.gambarAcademy.update');
+            Route::delete('/destroy/{id}', [GambarAcademyController::class, 'destroy'])->name('admin.swaacademy.gambarAcademy.destroy');
+        });
+        Route::prefix('textacademy')->group(function () {
+            Route::get('/', [TextAcademyController::class, 'index'])->name('textacademy.index');
+            Route::post('/store', [TextAcademyController::class, 'store'])->name('textacademy.store');
+            Route::put('/update/{id}', [TextAcademyController::class, 'update'])->name('textacademy.update');
+            Route::delete('/destroy/{id}', [TextAcademyController::class, 'destroy'])->name('textacademy.destroy');
         });
     });
 });
