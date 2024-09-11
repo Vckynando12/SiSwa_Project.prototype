@@ -204,6 +204,36 @@
                     </li>
                 </ul>
             </li>
+            
+            <li class="sidebar-item">
+                <a class="sidebar-link has-arrow d-flex justify-content-between align-items-center" href="javascript:void(0)" aria-expanded="false">
+                    <span>
+                        <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                        <span class="hide-menu">Swa Academy</span>
+                    </span>
+                    <span>
+                        <iconify-icon icon="akar-icons:chevron-right" class="dropdown-icon-right"></iconify-icon>
+                        <iconify-icon icon="akar-icons:chevron-down" class="dropdown-icon-down d-none"></iconify-icon>
+                    </span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.swaacademy.carouselacademy.index') }}" class="sidebar-link">
+                            <span class="hide-menu">Carousel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.digitalsolution.gambards.index') }}" class="sidebar-link">
+                            <span class="hide-menu">Gambar </span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.digitalsolution.textds.index') }}" class="sidebar-link">
+                            <span class="hide-menu">Text</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-small-cap">
             <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6"></iconify-icon>
             <span class="hide-menu">AUTH</span>

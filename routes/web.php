@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\swaacademy\CarouselAcademyController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\DigitalMarketingController;
 use App\Http\Controllers\SekilasPerusahaanController;
@@ -213,6 +214,15 @@ Route::middleware('admin')->prefix('admin')->group(function () {
             Route::post('/store', [TextdsController::class, 'store'])->name('admin.digitalsolution.textds.store');
             Route::put('/update/{id}', [TextdsController::class, 'update'])->name('admin.digitalsolution.textds.update');
             Route::delete('/destroy/{id}', [TextdsController::class, 'destroy'])->name('admin.digitalsolution.textds.destroy');
+        });
+        
+    });
+    Route::prefix('swaacademy')->group(function () {
+        Route::prefix('carouselacademy')->group(function () {
+            Route::get('/', [CarouselAcademyController::class, 'index'])->name('admin.swaacademy.carouselacademy.index');
+            Route::post('/store', [CarouselAcademyController::class, 'store'])->name('admin.swaacademy.carouselacademy.store');
+            Route::put('/update/{id}', [CarouselAcademyController::class, 'update'])->name('admin.swaacademy.carouselacademy.update');
+            Route::delete('/delete/{id}', [CarouselAcademyController::class, 'destroy'])->name('admin.swaacademy.carouselacademy.destroy');
         });
     });
 });
