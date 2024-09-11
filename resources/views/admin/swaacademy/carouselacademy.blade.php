@@ -82,7 +82,7 @@
         var id = document.getElementById('id').value;
         var form = document.getElementById('carouselForm');
         var formData = new FormData(form);
-        var url = id ? `{{ route('admin.swaacademy.carouselacademy.update', '') }}/${id}` : `{{ route('admin.swaacademy.carouselacademy.store') }}`;
+        var url = id ? `{{ route('carouselacademy.update', '') }}/${id}` : `{{ route('carouselacademy.store') }}`;
         var method = id ? 'POST' : 'POST'; // Always use POST since we handle PUT with _method
 
         fetch(url, {
@@ -131,7 +131,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`{{ route('admin.swaacademy.carouselacademy.destroy', '') }}/${id}`, {
+                    fetch(`{{ route('carouselacademy.destroy', '') }}/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'

@@ -221,16 +221,16 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     });
     Route::prefix('swaacademy')->group(function () {
         Route::prefix('carouselacademy')->group(function () {
-            Route::get('/', [CarouselAcademyController::class, 'index'])->name('admin.swaacademy.carouselacademy.index');
-            Route::post('/store', [CarouselAcademyController::class, 'store'])->name('admin.swaacademy.carouselacademy.store');
-            Route::put('/update/{id}', [CarouselAcademyController::class, 'update'])->name('admin.swaacademy.carouselacademy.update');
-            Route::delete('/delete/{id}', [CarouselAcademyController::class, 'destroy'])->name('admin.swaacademy.carouselacademy.destroy');
+            Route::get('/', [CarouselAcademyController::class, 'index'])->name('carouselacademy.index');
+            Route::post('/store', [CarouselAcademyController::class, 'store'])->name('carouselacademy.store');
+            Route::put('/update/{id}', [CarouselAcademyController::class, 'update'])->name('carouselacademy.update');
+            Route::delete('/delete/{id}', [CarouselAcademyController::class, 'destroy'])->name('carouselacademy.destroy');
         });
         Route::prefix('gambaracademy')->group(function () {
-            Route::get('/', [GambarAcademyController::class, 'index'])->name('admin.swaacademy.gambarAcademy.index');
-            Route::post('/store', [GambarAcademyController::class, 'store'])->name('admin.swaacademy.gambarAcademy.store');
-            Route::put('/update/{id}', [GambarAcademyController::class, 'update'])->name('admin.swaacademy.gambarAcademy.update');
-            Route::delete('/destroy/{id}', [GambarAcademyController::class, 'destroy'])->name('admin.swaacademy.gambarAcademy.destroy');
+            Route::get('/', [GambarAcademyController::class, 'index'])->name('gambarAcademy.index');
+            Route::post('/store', [GambarAcademyController::class, 'store'])->name('gambarAcademy.store');
+            Route::put('/update/{id}', [GambarAcademyController::class, 'update'])->name('gambarAcademy.update');
+            Route::delete('/destroy/{id}', [GambarAcademyController::class, 'destroy'])->name('gambarAcademy.destroy');
         });
         Route::prefix('textacademy')->group(function () {
             Route::get('/', [TextAcademyController::class, 'index'])->name('textacademy.index');

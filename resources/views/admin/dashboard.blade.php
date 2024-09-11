@@ -218,17 +218,17 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                     <li class="sidebar-item">
-                        <a href="{{ route('admin.swaacademy.carouselacademy.index') }}" class="sidebar-link">
+                        <a href="{{ route('carouselacademy.index') }}" class="sidebar-link">
                             <span class="hide-menu">Carousel</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{ route('admin.digitalsolution.gambards.index') }}" class="sidebar-link">
+                        <a href="{{ route('gambarAcademy.index') }}" class="sidebar-link">
                             <span class="hide-menu">Gambar </span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{ route('admin.digitalsolution.textds.index') }}" class="sidebar-link">
+                        <a href="{{ route('textacademy.index') }}" class="sidebar-link">
                             <span class="hide-menu">Text</span>
                         </a>
                     </li>
