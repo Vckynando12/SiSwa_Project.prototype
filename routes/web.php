@@ -44,17 +44,17 @@ Route::post('auth/register', [AuthController::class, 'register']);
 
 
 
-    Route::middleware('admin')->prefix('admin')->group(function () {
-        // Dashboard Digital Marketing
-        Route::get('/digitalmarketing', [DigitalMarketingController::class, 'index'])->name('admin.digitalmarketing');
-    });
+Route::middleware('checkRole:3')->prefix('digital')->group(function () {
+    // Dashboard Digital Marketing
+    Route::get('/digitalmarketing', [DigitalMarketingController::class, 'index'])->name('digital.dashboard');
+});
 
-    Route::middleware('admin')->prefix('admin')->group(function () {
-        // Dashboard Admin
-        Route::get('/sdm', [SdmController::class, 'index'])->name('admin.sdm');
-    });
+Route::middleware('checkRole:2')->prefix('sdm')->group(function () {
+    // Dashboard Admin
+    Route::get('/sdm', [SdmController::class, 'index'])->name('sdm.dashboard');
+});
 
-Route::middleware('admin')->prefix('admin')->group(function () {
+Route::middleware('checkRole:1')->prefix('admin')->group(function () {
     // Dashboard Admin
     Route::get('/dashboard', [CarouselController::class, 'index'])->name('admin.dashboard');
 
@@ -217,7 +217,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
             Route::put('/update/{id}', [TextdsController::class, 'update'])->name('admin.digitalsolution.textds.update');
             Route::delete('/destroy/{id}', [TextdsController::class, 'destroy'])->name('admin.digitalsolution.textds.destroy');
         });
-        
     });
     Route::prefix('swaacademy')->group(function () {
         Route::prefix('carouselacademy')->group(function () {

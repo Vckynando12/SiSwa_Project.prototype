@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <!-- Tambahkan CSS Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -37,9 +39,9 @@
                             <div class="form-group">
                                 <label for="role">Pilih Role</label>
                                 <select name="role" class="form-control" required>
-                                    <option value="admin">Admin</option>
-                                    <option value="digital_marketing">Digital Marketing</option>
-                                    <option value="sdm">SDM</option>
+                                    @foreach ($roles as $r)
+                                        <option value="{{ $r->id }}">{{ $r->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Daftar</button>
@@ -53,4 +55,5 @@
     <!-- Tambahkan JavaScript Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

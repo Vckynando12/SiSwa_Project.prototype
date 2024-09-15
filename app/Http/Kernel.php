@@ -26,7 +26,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+            \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -43,8 +43,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
-        'digital_marketing' => \App\Http\Middleware\RedirectIfNotDigitalMarketing::class,
-        'sdm' => \App\Http\Middleware\RedirectIfNotSdm::class,
+        'checkRole' => \App\Http\Middleware\CheckAuth::class,
+        // 'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
+        // 'digital_marketing' => \App\Http\Middleware\RedirectIfNotDigitalMarketing::class,
+        // 'sdm' => \App\Http\Middleware\RedirectIfNotSdm::class,
     ];
 }

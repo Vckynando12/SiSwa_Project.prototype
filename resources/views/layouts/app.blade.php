@@ -1,63 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin Dashboard')</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title')</title>
+    <link rel="shortcut icon" type="image/png"
+        href="https://th.bing.com/th/id/OIP.kAUISDUCtKkJbri2eOKW6gAAAA?rs=1&pid=ImgDetMain" />
+    <link rel="stylesheet" href="{{ asset('admin/css/styles.min.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @stack('styles')
 </head>
+
 <body>
-    <div id="app">
-        <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.landingpage.carousel.index') }}">Carousel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.landingpage.sekilas.index') }}">Sekilas Perusahaan</a>
-                    </li>
-                    <!-- Add this in the navbar section -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.landingpage.jejaklangkah.index') }}">Jejak Langkah</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('auth.logout') }}" 
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <x-dashboard.brand-logo />
+                <!-- Sidebar navigation-->
+                <x-dashboard.navigation-menu />
+                <!-- End Sidebar navigation -->
             </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <x-dashboard.header />
+            <!--  Header End -->
+            <div class="container-fluid">
+                {{ $slot }}
+            </div>
+        </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    @stack('scripts')
+    <script src="{{ asset('admin/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('admin/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="{{ asset('admin/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('admin/js/app.min.js') }}"></script>
+    <script src="{{ asset('admin/js/dashboard.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.sidebar-link.has-arrow').on('click', function() {
+                var $this = $(this);
+                var $submenu = $this.next('.collapse');
+                $submenu.slideToggle(300);
+                $this.find('.dropdown-icon').toggleClass('rotate');
+            });
+        });
+    </script>
+    <style>
+        .dropdown-icon.rotate {
+            transform: rotate(90deg);
+            transition: transform 0.3s;
+        }
+    </style>
+    @stack('js')
 </body>
+
 </html>
