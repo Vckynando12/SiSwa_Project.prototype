@@ -12,6 +12,13 @@
                 <span class="hide-menu">Dashboard</span>
             </a>
         </li>
+        @if (Auth::user()->role_id == '1')
+            {{-- admin --}}
+        @elseif(Auth::user()->role_id == '2')
+            {{-- smd --}}
+        @elseif(Auth::user()->role_id == '3')
+            {{-- digital marketing --}}
+        @endif
         <li class="nav-small-cap">
             <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
             <span class="hide-menu">UI COMPONENTS</span>
